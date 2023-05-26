@@ -17,7 +17,7 @@
 修改文件 /system/dashboard-ui/index.html (Docker版,其他类似),在`</body>`前添加如下标签
 
 ```
-<script src="https://cdn.jsdelivr.net/gh/RyoLee/emby-danmaku@gh-pages/ede.user.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/RoyShen12/dd-danmaku/ede.js" defer></script>
 ```
 该方式安装与浏览器插件安装**可同时使用不冲突**
 
