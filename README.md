@@ -14,7 +14,9 @@
 
 ### 修改服务端
 
-修改文件 /system/dashboard-ui/index.html (Docker版,其他类似),在`</body>`前添加如下标签
+修改文件 `/system/dashboard-ui/index.html` (Docker版,其他类似)
+`%USERPROFILE%\AppData\Roaming\Emby-Server\system\dashboard-ui\index.html`
+在`</body>`前添加如下标签
 
 ```
 <script src="https://cdn.jsdelivr.net/gh/RoyShen12/dd-danmaku/ede.js" defer></script>
