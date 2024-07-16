@@ -31,7 +31,7 @@
             is: 'paper-icon-button-light',
         };
         const uiAnchorStr = '\uE034';
-        const mediaContainerQueryStr = "div[data-type='video-osd']";
+        const mediaContainerQueryStr = "div.view-videoosd-videoosd";
         const mediaQueryStr = 'video';
         const displayButtonOpts = {
             title: '弹幕开关',
