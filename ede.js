@@ -252,7 +252,7 @@
                         if (item.pluginsList) {
                             for (const plugin of item.pluginsList) {
                                 if (plugin && plugin.id == 'htmlvideoplayer') {
-                                    res(plugin._currentPlayOptions ? plugin._currentPlayOptions.item : null);
+                                    res(plugin._currentPlayOptions?.item);
                                 }
                             }
                         }
