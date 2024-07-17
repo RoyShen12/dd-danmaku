@@ -412,6 +412,8 @@
     }
 
     function reloadDanmaku(type = 'check') {
+        logMessage('reloadDanmaku invoked');
+
         if (window.ede.loading) {
             logMessage('正在重新加载');
             return;
