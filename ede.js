@@ -28,7 +28,7 @@
         class: 'paper-icon-button-light',
         is: 'paper-icon-button-light',
     };
-    const uiAnchorStr = '\uE034';
+    const uiAnchorStr = 'div.view-videoosd-videoosd:not(.hide) div.videoOsdBottom-buttons.flex';
     const mediaContainerQueryStr = 'div.view-videoosd-videoosd:not(.hide)';
     const mediaQueryStr = 'video';
     const logMessage = (...msg) => console.log('[Emby danmaku]', ...msg);
@@ -173,7 +173,7 @@
 
     function initUI() {
         // 页面未加载
-        const uiAnchorList = document.querySelectorAll('div.videoOsdBottom-buttons.flex');
+        const uiAnchorList = document.querySelectorAll(uiAnchorStr);
         const uiAnchor = uiAnchorList[uiAnchorList.length - 1];
         if (!uiAnchor) {
             return;
@@ -369,11 +369,13 @@
         if (!comments) {
             return;
         }
+
         if (window.ede.danmaku != null) {
             window.ede.danmaku.clear();
             window.ede.danmaku.destroy();
             window.ede.danmaku = null;
         }
+
         let _comments = danmakuFilter(danmakuParser(comments));
         logMessage('弹幕加载成功: ' + _comments.length);
 
@@ -389,10 +391,13 @@
             comments: _comments,
             engine: 'canvas',
         });
+
         window.ede.danmakuSwitch == 1 ? window.ede.danmaku.show() : window.ede.danmaku.hide();
+
         if (window.ede.ob) {
             window.ede.ob.disconnect();
         }
+
         window.ede.ob = new ResizeObserver(() => {
             if (window.ede.danmaku) {
                 logMessage('Resizing');
