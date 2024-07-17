@@ -148,19 +148,22 @@
     }
 
     function initListener() {
-        let container = document.querySelector(mediaQueryStr);
+        let videoEle = document.querySelector(mediaQueryStr);
         // 页面未加载
-        if (!container) {
+        if (!videoEle) {
             if (window.ede.episode_info) {
                 window.ede.episode_info = null;
             }
             return;
         }
-        if (!container.getAttribute('ede_listening')) {
+        if (!videoEle.getAttribute('ede_listening')) {
             logMessage('正在初始化Listener');
-            container.setAttribute('ede_listening', true);
-            container.addEventListener('play', reloadDanmaku);
+            videoEle.setAttribute('ede_listening', true);
+            videoEle.addEventListener('play', reloadDanmaku);
             logMessage('Listener初始化完成');
+            if (!videoEle.pause) {
+                reloadDanmaku();
+            }
         }
     }
 
@@ -418,7 +421,9 @@
             logMessage('正在重新加载');
             return;
         }
+
         window.ede.loading = true;
+
         getEpisodeInfo(type != 'search')
             .then((info) => {
                 return new Promise((resolve, reject) => {
