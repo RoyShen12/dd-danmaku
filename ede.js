@@ -174,12 +174,11 @@
         }
         // 页面未加载
         let uiAnchor = document.querySelector('div.videoOsdBottom-buttons.flex');
-        if (!uiAnchor || !uiAnchor[0]) {
+        if (!uiAnchor) {
             return;
         }
         logMessage('正在初始化UI');
-        // 弹幕按钮容器div
-        let parent = uiAnchor[0].parentNode.parentNode.parentNode;
+
         let menubar = document.createElement('div');
 
         menubar.id = 'danmakuCtr';
@@ -188,7 +187,7 @@
             menubar.style.opacity = 0.5;
         }
 
-        parent.append(menubar);
+        uiAnchor.append(menubar);
 
         // 弹幕开关
         displayButtonOpts.innerText = danmaku_icons[window.ede.danmakuSwitch];
