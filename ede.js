@@ -165,9 +165,9 @@
                 reloadDanmaku();
             });
             logMessage('Listener初始化完成');
-            if (!videoEle.paused) {
-                reloadDanmaku();
-            }
+            // if (!videoEle.paused) {
+            //     reloadDanmaku();
+            // }
         }
     }
 
