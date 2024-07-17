@@ -168,14 +168,20 @@
     }
 
     function initUI() {
-        // 已初始化
-        if (document.getElementById('danmakuCtr')) {
-            return;
-        }
         // 页面未加载
-        let uiAnchor = document.querySelector('div.videoOsdBottom-buttons.flex');
+        const uiAnchorList = document.querySelectorAll('div.videoOsdBottom-buttons.flex');
+        const uiAnchor = uiAnchorList[uiAnchorList.length - 1];
         if (!uiAnchor) {
             return;
+        }
+        // 已初始化
+        const ctrlEle = document.getElementById('danmakuCtr');
+        if (ctrlEle && ctrlEle.parentElement === uiAnchor) {
+            return;
+        } else {
+            if (ctrlEle) {
+                ctrlEle.remove();
+            }
         }
         logMessage('正在初始化UI');
 
