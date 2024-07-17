@@ -161,6 +161,7 @@
             videoEle.setAttribute('ede_listening', true);
             videoEle.addEventListener('play', reloadDanmaku);
             logMessage('Listener初始化完成');
+            console.log('videoEle.pause:', videoEle.pause);
             if (!videoEle.pause) {
                 reloadDanmaku();
             }
@@ -339,6 +340,8 @@
     }
 
     function getComments(episodeId) {
+        logMessage('开始下载弹幕');
+
         let url = 'https://api.9-ch.com/cors/https://api.dandanplay.net/api/v2/comment/' + episodeId + '?withRelated=true&chConvert=' + window.ede.chConvert;
         return fetch(url, {
             method: 'GET',
