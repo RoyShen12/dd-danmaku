@@ -29,7 +29,7 @@
         is: 'paper-icon-button-light',
     };
     const uiAnchorStr = '\uE034';
-    const mediaContainerQueryStr = 'div.view-videoosd-videoosd';
+    const mediaContainerQueryStr = 'div.view-videoosd-videoosd:not(.hide)';
     const mediaQueryStr = 'video';
     const logMessage = (...msg) => console.log('[Emby danmaku]', ...msg);
     const displayButtonOpts = {
