@@ -32,33 +32,6 @@
     const mediaContainerQueryStr = 'div.view-videoosd-videoosd';
     const mediaQueryStr = 'video';
     const logMessage = (...msg) => console.log('[Emby danmaku]', ...msg);
-    document.getElementsByInnerText = function (tagType, innerStr, excludeChildNode = true) {
-        var temp = [];
-        var elements = document.getElementsByTagName(tagType);
-        if (!elements || 0 == elements.length) {
-            return temp;
-        }
-        for (let index = 0; index < elements.length; index++) {
-            var e = elements[index];
-            if (e.innerText.includes(innerStr)) {
-                temp.push(e);
-            }
-        }
-        if (!excludeChildNode) {
-            return temp;
-        }
-        var res = [];
-        temp.forEach((e) => {
-            var e_copy = e.cloneNode(true);
-            while (e_copy.firstChild != e_copy.lastChild) {
-                e_copy.removeChild(e_copy.lastChild);
-            }
-            if (e_copy.innerText.includes(innerStr)) {
-                res.push(e);
-            }
-        });
-        return res;
-    };
     const displayButtonOpts = {
         title: '弹幕开关',
         id: 'displayDanmaku',
@@ -200,7 +173,7 @@
             return;
         }
         // 页面未加载
-        let uiAnchor = document.getElementsByInnerText('i', uiAnchorStr);
+        let uiAnchor = document.querySelector('div.videoOsdBottom-buttons.flex');
         if (!uiAnchor || !uiAnchor[0]) {
             return;
         }
