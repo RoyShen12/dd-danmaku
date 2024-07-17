@@ -156,13 +156,16 @@
             }
             return;
         }
+
         if (!videoEle.getAttribute('ede_listening')) {
             logMessage('正在初始化Listener');
             videoEle.setAttribute('ede_listening', true);
-            videoEle.addEventListener('play', reloadDanmaku);
+            videoEle.addEventListener('play', () => {
+                logMessage('videoEle play event');
+                reloadDanmaku();
+            });
             logMessage('Listener初始化完成');
-            console.log('videoEle.pause:', videoEle.pause);
-            if (!videoEle.pause) {
+            if (!videoEle.paused) {
                 reloadDanmaku();
             }
         }
