@@ -365,16 +365,20 @@
             });
     }
 
-    async function createDanmaku(comments) {
-        if (!comments) {
-            return;
-        }
-
+    function danmakuRemove() {
         if (window.ede.danmaku != null) {
             window.ede.danmaku.clear();
             window.ede.danmaku.destroy();
             window.ede.danmaku = null;
         }
+    }
+
+    async function createDanmaku(comments) {
+        if (!comments) {
+            return;
+        }
+
+        danmakuRemove();
 
         let _comments = danmakuFilter(danmakuParser(comments));
         logMessage('弹幕加载成功: ' + _comments.length);
@@ -427,10 +431,12 @@
                             reject(null);
                         }
                     }
+
                     if (type != 'search' && type != 'reload' && window.ede.danmaku && window.ede.episode_info && window.ede.episode_info.episodeId == info.episodeId) {
                         reject('当前播放视频未变动');
                     } else {
                         window.ede.episode_info = info;
+                        danmakuRemove();
                         resolve(info.episodeId);
                     }
                 });
